@@ -4,6 +4,7 @@ Ethereum playground is a simple batteries-included development environment with 
 
 ## Pre Requisites
 
+Mac OS / Windows or Linux machine with at least 2GB of RAM
 Download and Install Virtualbox from : https://www.virtualbox.org/wiki/Downloads. You can check the version of VirtualBox and Vagrant to ensure everything is installed correctly.
 
 ~~~shell
