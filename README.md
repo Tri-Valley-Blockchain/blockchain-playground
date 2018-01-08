@@ -34,7 +34,7 @@ Build the eth playground VM. The following command will take 5 minutes depending
 $ vagrant up
 ~~~
 
-You now have a working environment to do your ethereum development. eth-playground directory will be in the home directory when you ssh into your VM.
+SSH into your ethereum playground (Ubuntu Trusty)
 
 ~~~shell
 $ vagrant ssh
