@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.name = "eth-sandbox"
     # Use VBoxManage to customize the VM. For example, to change memory and
     # allow symlinks to be created in the shared folder (ex: node_modules):
-    vb.customize ["modifyvm", :id, "--memory", "512"]
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
     vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/proj-name", "1"]
   end
 
