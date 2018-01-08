@@ -7,8 +7,11 @@ Pre Requisites:
 - Run in your terminal :
 
 $ vagrant up
+
 - SSH into your ethereum playground (Ubuntu Trusty)
+
 $ vagrant ssh
+
 $ cd eth-playground
 
 Use the README file of individual chapter directories for help.
