@@ -12,19 +12,12 @@ Start the blockchain. The network id should be the same as chainId in config sec
 $ geth --datadir /tmp/eth-playground/data --networkid 94582
 ~~~
 
-In another terminal window , connect to this blockchain to create a new account and start mining.
+In another terminal window , connect to this blockchain and check the balance of one of the accounts created in genesis.json
 
 ~~~shell
 $ geth attach /tmp/eth-playground/data/geth.ipc
 
- > personal.newAccount()
- Passphrase:
- Repeat passphrase:
- "0x64401fce28913b8003b3e716a3d70296d2354ef7"
-
- > eth.getBalance("0x64401fce28913b8003b3e716a3d70296d2354ef7")
- 0
- > miner.start()
- null
+ > eth.getBalance("7df9a875a174b3bc565e6424a0050ebc1b2d1d82")
+ 300000
 ~~~
 
