@@ -67,7 +67,7 @@ function start_node() {
        -v $DATA_HASH:/root/.ethash \
        -v $(pwd)/genesis.json:/opt/genesis.json \
        $RPC_PORTMAP \
-       $IMAGE geth --bootnodes=$BOOTNODE_URL $RPC_ARG --cache=512 --verbosity=4 --maxpeers=3 ${@:2}
+       $IMAGE geth --bootnodes=$BOOTNODE_URL $RPC_ARG --cache=512 --verbosity=4 --maxpeers=3 ${@:3}
 }
 
 function show_peers() {
