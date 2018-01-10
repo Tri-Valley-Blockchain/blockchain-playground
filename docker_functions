@@ -3,6 +3,7 @@ export IMAGE="ethereum/client-go:alltools-v1.7.3"
 function start_boot_node() {
    docker stop ethereum-bootnode
    docker rm ethereum-bootnode
+   DATA_ROOT=$(pwd)
 
    # generate bootnode key if needed
    mkdir -p $DATA_ROOT/.bootnode
