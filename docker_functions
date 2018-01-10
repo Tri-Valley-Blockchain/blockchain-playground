@@ -35,6 +35,7 @@ function get_boot_node_url() {
 
 function start_node() {
    NODE_NAME=$1
+   RPC_PORT=$2
    DETACH_FLAG=${DETACH_FLAG:-"-d"}
    CONTAINER_NAME="ethereum-$NODE_NAME"
    echo "Data root is $DATA_ROOT";
@@ -78,8 +79,9 @@ function show_peers() {
 
 function start_miner() {
   NODE_NAME=$1
+  RPC_PORT=$2
   ETHERBASE=${ETHERBASE:-"0x0000000000000000000000000000000000000001"}
-  RPC_PORT=8545 start_node $NODE_NAME --mine --minerthreads=1 --etherbase="$ETHERBASE"
+  start_node $NODE_NAME $RPC_PORT --mine --minerthreads=1 --etherbase="$ETHERBASE"
 }
 
 function start_all() {
@@ -89,7 +91,7 @@ function start_all() {
   else
     start_boot_node 2>/dev/null
     start_node $1 2>/dev/null
-    start_miner $1-miner 2>/dev/null
+    start_miner $1-miner 8545 2>/dev/null
   fi
 }
 
