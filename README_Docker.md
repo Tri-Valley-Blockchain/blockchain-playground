@@ -6,7 +6,8 @@ Ethereum playground is a simple batteries-included development environment with 
 
 Mac OS / Windows or Linux machine with at least 2GB of RAM for VM to spare.
 
-Download and Install Docker from : https://store.docker.com/editions/community/docker-ce-desktop-mac
+Download and Install Docker from : https://store.docker.com/search?offering=community&type=edition
+
 Download and Install Git: https://git-scm.com/downloads
 
 ~~~shell
