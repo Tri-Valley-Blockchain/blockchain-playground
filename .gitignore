@@ -1,3 +1,6 @@
+.ether-*
+.ethash
+.bootnode
 .vagrant
 .vagrant/*
 # Logs

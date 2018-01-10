@@ -1,46 +1,9 @@
-# Ethereum Playground
+# Ethereum Playground 
 
-Ethereum playground is a simple batteries-included development environment with all the tools needed pre-installed. It uses Virtualbox to run a version of Ubunty Trusty Linux and builds it using Vagrant. Please use the links in the pre requisites section to install Virtualbox and Vagrant in your Operating system (whether it is Mac, Windows or Linux).
+Ethereum playground is a simple batteries-included development environment with all the tools needed pre-installed. 
 
-## Pre Requisites
+There are two options. You can run a Virtualbox VM and build a dev environment using Vagrant or use Docker containers provided by the ethereum project to bootstrap your development environment. The docker container is preferred.
 
-Mac OS / Windows or Linux machine with at least 2GB of RAM for VM
+[Setup environment with Docker](README_Docker.md)
 
-Download and Install Virtualbox from : https://www.virtualbox.org/wiki/Downloads. You can check the version of VirtualBox and Vagrant to ensure everything is installed correctly.
-
-~~~shell
-$ VBoxManage --version
-5.0.14r105127
-~~~
-
-Download and Install Vagrant from : https://www.vagrantup.com/
-
-~~~shell
-$  vagrant -v
-Vagrant 2.0.1
-~~~
-
-
-## Step by Step setup:
-
-Clone this repository from github.
-
-~~~shell
-git clone git@github.com:trivalley-blockchain/eth-playground.git
-cd eth-playground
-~~~
-
-Build the eth playground VM. The following command will take 5 minutes depending on your internet connection if you are doing this for the first time as it has to download an image of Ubuntu Trusty.
-
-~~~shell
-$ vagrant up
-~~~
-
-SSH into your ethereum playground (Ubuntu Trusty)
-
-~~~shell
-$ vagrant ssh
-$ cd eth-playground
-~~~
-
-Use the README file of individual chapter directories to start development.
+[Setup environment with Vagrant](README_Vagrant.md)

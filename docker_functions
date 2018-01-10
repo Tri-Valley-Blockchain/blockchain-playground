@@ -1,0 +1,109 @@
+export IMAGE="ethereum/client-go:alltools-v1.7.3"
+
+function start_boot_node() {
+   docker stop ethereum-bootnode
+   docker rm ethereum-bootnode
+
+   # generate bootnode key if needed
+   mkdir -p $DATA_ROOT/.bootnode
+   if [ ! -f $DATA_ROOT/.bootnode/boot.key ]; then
+    echo "$DATA_ROOT/.bootnode/boot.key not found, generating..."
+    docker run --rm \
+        -v $DATA_ROOT/.bootnode:/opt/bootnode \
+        $IMAGE bootnode --genkey /opt/bootnode/boot.key
+    echo "...done!"
+   fi
+
+   # creates ethereum network
+   [ ! "$(docker network ls | grep ethereum)" ] && docker network create ethereum;
+   [[ -z $BOOTNODE_SERVICE ]] && BOOTNODE_SERVICE="127.0.0.1";
+   docker run -d --name ethereum-bootnode \
+          -v $DATA_ROOT/.bootnode:/opt/bootnode \
+          --network ethereum \
+          $IMAGE bootnode --nodekey /opt/bootnode/boot.key --verbosity=3 "$@";
+}
+
+function get_boot_node_url() {
+   # reads current bootnode URL
+   ENODE_LINE=$(docker logs ethereum-bootnode 2>&1 | grep enode | head -n 1)
+   # replaces localhost by container IP
+   MYIP=$(docker exec ethereum-bootnode ifconfig eth0 | awk '/inet addr/{print substr($2,6)}')
+   ENODE_LINE=$(echo $ENODE_LINE | sed "s/127\.0\.0\.1/$MYIP/g" | sed "s/\[\:\:\]/$MYIP/g")
+   echo "enode:${ENODE_LINE#*enode:}"
+}
+
+function start_node() {
+   NODE_NAME=$1
+   DETACH_FLAG=${DETACH_FLAG:-"-d"}
+   CONTAINER_NAME="ethereum-$NODE_NAME"
+   echo "Data root is $DATA_ROOT";
+   DATA_ROOT="$(pwd)/.ether-$NODE_NAME"
+   DATA_HASH="$(pwd)/.ethash"
+   echo "Destroying old container $CONTAINER_NAME..."
+   docker stop $CONTAINER_NAME
+   docker rm $CONTAINER_NAME
+   RPC_PORTMAP=
+   RPC_ARG=
+   if [[ ! -z $RPC_PORT ]]; then
+       RPC_ARG='--rpc --rpcaddr=0.0.0.0 --rpcapi=db,eth,net,web3,personal --rpccorsdomain "*"'
+       RPC_PORTMAP="-p $RPC_PORT:8545"
+   fi
+   BOOTNODE_URL=${BOOTNODE_URL:-$(get_boot_node_url)}
+   echo "Bootnode URL is :" $BOOTNODE_URL;
+   if [ ! -d $DATA_ROOT/keystore ]; then
+       echo "$DATA_ROOT/keystore not found, running 'geth init'..."
+       docker run --rm \
+           -v $DATA_ROOT:/root/.ethereum \
+           -v $(pwd)/genesis.json:/opt/genesis.json \
+           $IMAGE geth init /opt/genesis.json
+       echo "...done!"
+   fi
+   echo "Running new container $CONTAINER_NAME..."
+   docker run $DETACH_FLAG --name $CONTAINER_NAME \
+       --network ethereum \
+       -v $DATA_ROOT:/root/.ethereum \
+       -v $DATA_HASH:/root/.ethash \
+       -v $(pwd)/genesis.json:/opt/genesis.json \
+       $RPC_PORTMAP \
+       $IMAGE geth --bootnodes=$BOOTNODE_URL $RPC_ARG --cache=512 --verbosity=4 --maxpeers=3 ${@:2}
+}
+
+function show_peers() {
+  NODE=$1
+  NODE=${NODE:-"node1"}
+  CONTAINER_NAME="ethereum-$NODE"
+  docker exec -ti "$CONTAINER_NAME" geth --exec 'admin.peers' attach
+}
+
+function start_miner() {
+  NODE_NAME=$1
+  ETHERBASE=${ETHERBASE:-"0x0000000000000000000000000000000000000001"}
+  RPC_PORT=8545 start_node $NODE_NAME --mine --minerthreads=1 --etherbase="$ETHERBASE"
+}
+
+function start_all() {
+  if test "$1X" = "X" 
+  then
+    echo "start_all <name>"
+  else
+    start_boot_node 2>/dev/null
+    start_node $1 2>/dev/null
+    start_miner $1-miner 2>/dev/null
+  fi
+}
+
+function stop_all() {
+  docker stop $(docker ps -q -f name=ethereum)
+  docker rm $(docker ps -aq -f name=ethereum)
+}
+
+function wipe_all() {
+DATA_ROOT=$(pwd)
+echo "Removing containers..."
+docker stop $(docker ps -q -f name=ethereum)
+docker rm $(docker ps -aq -f name=ethereum)
+echo "Removing volumes in $DATA_ROOT..."
+rm -Rf $DATA_ROOT/.ether-*
+rm -Rf $DATA_ROOT/.ethash
+rm -Rf $DATA_ROOT/.bootnode
+}
