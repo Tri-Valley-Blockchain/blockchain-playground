@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
+  "repository": "https://github.com/trivalley-blockchain/eth-playground",
   "license": "ISC",
   "dependencies": {
     "commander": "^2.13.0",
