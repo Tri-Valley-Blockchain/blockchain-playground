@@ -16,6 +16,12 @@ const ETHEREUM_NETWORK = process.env.ETHEREUM_NETWORK === undefined ? "http://lo
 console.log("Ethereum network set as " + ETHEREUM_NETWORK);
 
 const web3 = new Web3(new Web3.providers.HttpProvider(ETHEREUM_NETWORK))
+
+if (!web3.isConnected()) { 
+    console.log("ERROR! Unable to connect to the network at " + ETHEREUM_NETWORK);
+    process.exit();
+}
+
 const theirAddr = Program.to;
 const myPrivateKey = Program.key.slice(2);
 const myAddr = Program.address;
@@ -46,5 +52,5 @@ web3.eth.sendRawTransaction(serializedTx,(error,data) => {
   }
 })
 
-console.log(web3.eth.getBalance(theirAddr).toNumber());
-console.log(web3.eth.getBalance(myAddr).toNumber());
+console.log("Balance in your account is : " + web3.fromWei(web3.eth.getBalance(myAddr)) + " ether.");
+console.log("Balance in their account is : " + web3.fromWei(web3.eth.getBalance(theirAddr)) + " ether.");
