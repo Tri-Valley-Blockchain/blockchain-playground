@@ -1,21 +1,23 @@
 ## Meetup 1 - 17/01/2018 - Hands-on with web3.js
-
-# What we will cover in this meetup:
+The goal of this meetup to make more concrete the concepts like public/private keys and signed transactions 
+that we discussed in the blockchain 101 meetup. We will do this by writing some simple JavaScript code. 
+# What we will cover in this meetup
 
 1. Generate a public/private keypair using node.js console (web3 apis as needed).
-2. Use web3 to connect to a ethereum testnet like rapsten via infura.io with the api keys and our keypair (so infura knows how to sign our transactions). (edited)
-3. Add some eth to the above generated keypair. May be we can the test eth faucet (https://faucet.metamask.io/). This is the part I 'm least clear about. So if anyone has more concrete info (or can research) that would be great. We don't want to be burning real ether in this meetup.
+2. Use web3 to connect to a ethereum testnet like rapsten via infura.io with the api keys and our keypair (so infura knows how to sign our transactions)
+3. Add some eth to the above generated keypair. 
 4. Create a json object on the node.js console for a eth transfer transaction between one meetup participant and the person sitting next to them or anyone else.
 5. Sign it, send it
 6. Use etherscan to confirm it. also use web api on the recepient's node.js console to confirm it.
 
-# Code
+# Detailed Instructions and Code 
 
+Use this if you want to leanr by typing the code yourself. 
 https://gist.github.com/lakamsani/b20fed6c5172c7fee781675a6c61798c
 
 # Sample scripts
 
-This directory has some sample scripts based on what you learned today.
+Use these scripts if you don't want to type code.
 
 ```shell
 
