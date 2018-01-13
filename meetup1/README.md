@@ -5,7 +5,7 @@ that we discussed in the blockchain 101 meetup. We will do this by writing some 
 
 1. Generate a public/private keypair using node.js console (web3 apis as needed).
 2. Use web3 to connect to a ethereum testnet like rapsten via infura.io with the api keys.
-3. Add some eth to the above generated keypair using [ethereum facucet](https://faucet.rinkeby.io/)
+3. Add some eth to the above generated keypair using [ethereum faucet](https://faucet.rinkeby.io/)
 4. Create a json object on the node.js console for a eth transfer transaction between one meetup participant and the person sitting next to them or anyone else.
 5. Sign it, send it
 6. Use etherscan to confirm it. also use web api on the recepient's node.js console to confirm it.
