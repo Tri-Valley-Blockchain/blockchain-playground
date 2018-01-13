@@ -19,7 +19,7 @@ This directory has some sample scripts based on what you learned today.
 
 ```shell
 
-$ export ETHEREUM_NETWORK="https://rinkeby.infura.io/<your-infura-key>
+$ export ETHEREUM_NETWORK="https://rinkeby.infura.io/<your-infura-key>"
 $ npm install
 $ ./generate_keypair.js  --password <your-secret-password>
 $ ./check_balance.js --address <your-public-key-address>

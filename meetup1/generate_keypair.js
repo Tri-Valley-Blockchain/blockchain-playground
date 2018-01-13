@@ -33,4 +33,4 @@ var privateKeyToAddress = function(privateKey) {
     return `0x${EthUtil.privateToAddress(pkey).toString('hex')}`
 }
 
-console.log("Public  key is " + privateKeyToAddress(privateKey.slice(2)));
+console.log("Public  key / wallet address is " + privateKeyToAddress(privateKey.slice(2)));
