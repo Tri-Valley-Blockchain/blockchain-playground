@@ -4,18 +4,18 @@ that we discussed in the blockchain 101 meetup. We will do this by writing some 
 # What we will cover in this meetup
 
 1. Generate a public/private keypair using node.js console (web3 apis as needed).
-2. Use web3 to connect to a ethereum testnet like rapsten via infura.io with the api keys and our keypair (so infura knows how to sign our transactions)
+2. Use web3 to connect to an Ethereum testnet like Rinkeby via infura.io with the api keys.
 3. Add some eth to the above generated keypair. 
 4. Create a json object on the node.js console for a eth transfer transaction between one meetup participant and the person sitting next to them or anyone else.
-5. Sign it, send it
+5. Sign it, send it.
 6. Use etherscan to confirm it. also use web api on the recepient's node.js console to confirm it.
 
-# Detailed Instructions and Code 
+# Learn by writing code
 
-Use this if you want to leanr by typing the code yourself. 
+Use this if you want to learn by typing the code yourself. 
 https://gist.github.com/lakamsani/b20fed6c5172c7fee781675a6c61798c
 
-# Sample scripts
+# Learn by running Sample scripts
 
 Use these scripts if you don't want to type code.
 
