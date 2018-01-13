@@ -27,3 +27,5 @@ var addr = privateKey.toAddress()
 
 console.log("BTC Private key is " + privateKey);
 console.log("BTC Public  key / wallet address is " + addr)
+console.log(`Check balance at https://live.blockcypher.com/btc/address/${addr}`)
+

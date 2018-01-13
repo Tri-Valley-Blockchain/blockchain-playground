@@ -48,5 +48,6 @@ var privateKeyToAddress = function(privateKey) {
     var pkey=new Buffer(privateKey,"hex");
     return `0x${EthUtil.privateToAddress(pkey).toString('hex')}`
 }
-
-console.log("ETH Public  key / wallet address is " + privateKeyToAddress(privateKey.slice(2)));
+const addr = privateKeyToAddress(privateKey.slice(2))
+console.log("ETH Public  key / wallet address is " + addr)
+console.log(`Check balance at https://rinkeby.etherscan.io/address/${addr}`)

@@ -28,7 +28,8 @@ const theirAddr = Program.to;
 const myPrivateKey = Program.key.slice(2);
 const myAddr = Program.address;
 
-console.log("My Private key is " + myPrivateKey);
+// enable this for debugging. avoid printing private keys
+//console.log("My Private key is " + myPrivateKey);
 console.log("My Public  key is " + myAddr);
 console.log("Sending 1 Ether to " + theirAddr);
 
@@ -46,9 +47,10 @@ const pKeyHex = new Buffer(myPrivateKey,"hex")
 
 tx.sign(pKeyHex)
 const serializedTx=`0x${tx.serialize().toString('hex')}`
-web3.eth.sendRawTransaction(serializedTx,(error,data) => {
+web3.eth.sendRawTransaction(serializedTx,(error,txid) => {
   if (!error) {
-    console.log(data)
+    console.log(txid)
+    console.log(`Check transaction at https://rinkeby.etherscan.io/tx/${txid}`)
   } else {
     console.log(error)
   }
