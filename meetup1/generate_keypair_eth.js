@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-
+// Thanks Jordan Leigh: https://www.youtube.com/watch?v=YWoBeoTUrYM&t=251s
 // Web3 and other required depenendcies
 
 const Web3 = require('web3')
@@ -32,7 +32,7 @@ if (!Program.password) Program.help();
 const passPhrase=Program.password.repeat(100)
 const privateKey=web3.sha3(web3.sha3(passPhrase))
 
-console.log("Private key is " + privateKey);
+console.log("ETH Private key is " + privateKey);
 
 // The following two functions are extracting the public key from the private key.
 // VERY IMPORTANT NOTE: You can go from private key to a public key deterministically but 
@@ -49,4 +49,4 @@ var privateKeyToAddress = function(privateKey) {
     return `0x${EthUtil.privateToAddress(pkey).toString('hex')}`
 }
 
-console.log("Public  key / wallet address is " + privateKeyToAddress(privateKey.slice(2)));
+console.log("ETH Public  key / wallet address is " + privateKeyToAddress(privateKey.slice(2)));

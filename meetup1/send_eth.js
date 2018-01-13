@@ -1,4 +1,6 @@
 #! /usr/bin/env node
+
+// Thanks Jordan Leigh: https://www.youtube.com/watch?v=BFEzWYFZ7wA&t=275s
 const Web3 = require('web3')
 const Program = require('commander');
 const EthTx = require('ethereumjs-tx')
