@@ -48,7 +48,6 @@ function start_node() {
    RPC_ARG=
    echo "RPC port is $RPC_PORT";
    if [[ ! -z $RPC_PORT ]]; then
-       echo "Iam here!!!!"
        RPC_ARG='--rpc --rpcaddr=0.0.0.0 --rpcapi=db,eth,net,web3,personal --rpccorsdomain "*"'
        RPC_PORTMAP="-p $RPC_PORT:8545"
    else
@@ -58,14 +57,14 @@ function start_node() {
    echo "Bootnode URL is :" $BOOTNODE_URL;
    if [ ! -d $DATA_ROOT/keystore ]; then
        echo "$DATA_ROOT/keystore not found, running 'geth init'..."
-       echo docker run --rm \
+       docker run --rm \
            -v $DATA_ROOT:/root/.ethereum \
            -v $(pwd)/genesis.json:/opt/genesis.json \
            $IMAGE geth init /opt/genesis.json
        echo "...done!"
    fi
    echo "Running new container $CONTAINER_NAME..."
-   echo docker run $DETACH_FLAG --name $CONTAINER_NAME \
+   docker run $DETACH_FLAG --name $CONTAINER_NAME \
        --network ethereum \
        -v $DATA_ROOT:/root/.ethereum \
        -v $DATA_HASH:/root/.ethash \
@@ -85,7 +84,7 @@ function start_miner() {
   NODE_NAME=$1
   RPC_PORT=$2
   ETHERBASE=${ETHERBASE:-"0x0000000000000000000000000000000000000001"}
-  start_node $NODE_NAME-miner $RPC_PORT --mine --minerthreads=1 --etherbase="$ETHERBASE"
+  start_node $NODE_NAME $RPC_PORT --mine --minerthreads=1 --etherbase="$ETHERBASE"
 }
 
 function start_all() {
