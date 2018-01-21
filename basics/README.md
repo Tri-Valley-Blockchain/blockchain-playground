@@ -21,7 +21,6 @@ git version 2.14.3 (Apple Git-98)
 ```shell
 $ git clone git@github.com:trivalley-blockchain/eth-playground.git
 $ cd basics
-$ docker-compose build
 $ docker-compose up -d basics rinkeby
 $ docker exec -it basics bash
 ```
