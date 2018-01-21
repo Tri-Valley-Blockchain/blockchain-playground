@@ -6,7 +6,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./:/root/
+      - .:/root/code
 
   rinkeby:
     container_name: rinkeby
