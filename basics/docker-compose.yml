@@ -1,0 +1,25 @@
+version: '2'
+services:
+  basics:
+    container_name: basics
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/root/
+
+  rinkeby:
+    container_name: rinkeby
+    image: ethereum/client-go
+    command: [
+      "--rinkeby",
+      "--datadir=/usr/ethereum",
+      "--rpc",
+      "--rpcapi=personal,eth,net,web3",
+      "--rpcaddr=0.0.0.0",
+      "--rpccorsdomain=*"
+    ]
+    ports:
+      - "8545:8545"
+    volumes:
+      - ~/.rinkeby:/usr/ethereum
