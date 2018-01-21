@@ -19,8 +19,8 @@ git version 2.14.3 (Apple Git-98)
 ~~~
 
 ```shell
-$ git clone git@github.com:trivalley-blockchain/eth-playground.git
-$ cd eth-basics
+$ git clone git@github.com:Tri-Valley-Blockchain/blockchain-playground.git
+$ cd ethereum/eth-basics
 $ docker-compose up -d eth-basics rinkeby
 $ docker exec -it eth-basics bash
 ```
