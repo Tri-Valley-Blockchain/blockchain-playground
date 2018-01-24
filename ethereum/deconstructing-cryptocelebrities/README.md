@@ -237,7 +237,7 @@ Simple method that would return the celebrity token information.
   }
  ```
  
- This is the main critical method of this smart contract. Here is where someone is willing to send ether in exchange to get the celebrity token.
+ This is the main critical method of this smart contract. Here is where someone who is willing to send ether in exchange for the celebrity token.
  
  ```
    // Allows someone to send ether and obtain the token
