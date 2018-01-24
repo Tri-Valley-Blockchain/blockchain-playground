@@ -10,7 +10,7 @@ services:
 
   rinkeby:
     container_name: rinkeby
-    image: ethereum/client-go
+    image: ethereum/client-go:alpine
     command: [
       "--rinkeby",
       "--datadir=/usr/ethereum",

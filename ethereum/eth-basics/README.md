@@ -49,3 +49,10 @@ Once you are done with all of your work, simply do the following to shut everyth
 docker-compose down
 ```
 
+Eventhough all the containers have been closed, the blockchain data from rinkeby network that you started is still in ~/.rinkeby. This is mainly to speed up the start of the network if you were to start another rinkeby container. If you want to clean that up , simply delete the directory. At the time of writing this, the rinkeby data volume was about 3.3 Gigs.
+
+```shell
+$ du -sh ~/.rinkeby
+3.3G	/Users/chandra/.rinkeby
+$ rm -rf ~/.rinkeby
+```
