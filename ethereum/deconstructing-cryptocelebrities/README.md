@@ -1,6 +1,6 @@
 # Deconstructing CryptoCelebrities
 
-If you thought [CryptoKitties](https://cryptokitties.io) and [CryptoZombies](https://cryptozombies.io) were the only crypto games in town, you would be wrong. There is a new kid on the block, [CryptoCelebrities](https://https://cryptocelebrities.co/). I thought it would be fun to read the crypto celebrities smart contract and deconstruct it to understand how such apps are built.
+If you thought [CryptoKitties](https://cryptokitties.io) and [CryptoZombies](https://cryptozombies.io) were the only crypto games in town, you would be wrong. There is a new kid on the block, [CryptoCelebrities](https://cryptocelebrities.co/). I thought it would be fun to read the crypto celebrities smart contract and deconstruct it to understand how such apps are built.
 
 Before we start, there are a few things you need to understand before you can dive deep into the code. You need to understand how blockchain works and how smart contracts work on top of the blockchain. It helps if you know solidity (the language thats used to write smart contracts in Ethereum). However, even if you don't know or ever used solidity,if you know any higher level language you should be able to follow the code fairly easily.
 
