@@ -12,7 +12,7 @@ Every celebrity in the CryptoCelebrities universe is a non-fungible token with a
 
 ### ERC721 tokens or Non-fungible tokens
 
-ERC stands for Ethereum Request for Comments (similar to RFCs in standards bodies), ERC721 defines a standard contract that all non fungible tokens sjould implement (non fungible tokens are tokens that are unique and are NOT interchangeable). There is another standard called ERC20 for fungible tokens (where one token can be exchanged for another token in the network).
+ERC stands for Ethereum Request for Comments (similar to RFCs in standards bodies), ERC721 defines a standard contract that all non fungible tokens should implement (non fungible tokens are tokens that are unique and are NOT interchangeable). There is another standard called ERC20 for fungible tokens (where one token can be exchanged for another token in the network).
 
 ```solidity
 contract ERC721 {
