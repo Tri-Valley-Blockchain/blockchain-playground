@@ -1,0 +1,25 @@
+version: '2'
+services:
+  hello_world:
+    container_name: hello_world
+    build: .
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/root/code
+
+#  rinkeby:
+#    container_name: rinkeby
+#    image: ethereum/client-go:alpine
+#    command: [
+#     "--rinkeby",
+#     "--datadir=/usr/ethereum",
+#     "--rpc",
+#     "--rpcapi=personal,eth,net,web3",
+#     "--rpcaddr=0.0.0.0",
+#     "--rpccorsdomain=*"
+#   ]
+#   ports:
+#     - "8545:8545"
+#   volumes:
+#     - ~/.rinkeby:/usr/ethereum
