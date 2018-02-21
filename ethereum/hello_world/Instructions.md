@@ -7,7 +7,7 @@ Truffle v4.0.5 (core: 4.0.5)
 Solidity v0.4.18 (solc-js)
 ~~~
 
-Install node modules that this project dependsnds on.
+Install node modules that this project depends on.
 
 ~~~shell
 # truffle init
