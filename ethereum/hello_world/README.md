@@ -20,7 +20,7 @@ git version 2.14.3 (Apple Git-98)
 
 ```shell
 $ git clone git@github.com:Tri-Valley-Blockchain/blockchain-playground.git
-$ cd ethereum/hello_world
+$ cd blockchain-playground/ethereum/hello_world
 $ docker-compose up -d hello_world 
 $ docker exec -it hello_world bash
 ```
