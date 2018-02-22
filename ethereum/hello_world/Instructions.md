@@ -86,6 +86,7 @@ Compile all the smart contracts and deploy themem to Rinkeby
 ~~~
 
 # truffle compile
+# truffle migrate --reset --network rinkeby
 # truffle migrate --network rinkeby
 
 ~~~
