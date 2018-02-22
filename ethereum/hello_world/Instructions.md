@@ -7,7 +7,7 @@ Truffle v4.0.5 (core: 4.0.5)
 Solidity v0.4.18 (solc-js)
 ~~~
 
-Install node modules that this project dependsnds on.
+Install node modules that this project depends on.
 
 ~~~shell
 # truffle init
@@ -86,6 +86,8 @@ Compile all the smart contracts and deploy themem to Rinkeby
 ~~~
 
 # truffle compile
+// Only reset if you have already deployed to this network and want to reset and deploy again.
+# truffle migrate --reset --network rinkeby
 # truffle migrate --network rinkeby
 
 ~~~
