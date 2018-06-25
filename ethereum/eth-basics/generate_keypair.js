@@ -29,8 +29,10 @@ if (!Program.password) Program.help();
 // The pass phrase/password is used to generate the private key. Different wallet software might have different ways
 // of using the pass phrase to create the private key. This also allows you to recover the private key with a pass phrase
 // in case you lose it. 
-const passPhrase=Program.password.repeat(100)
-const privateKey=web3.sha3(web3.sha3(passPhrase))
+//const passPhrase=Program.password.repeat(100)
+//const privateKey=web3.sha3(web3.sha3(passPhrase))
+//
+const privateKey=web3.sha3(Program.password)
 
 console.log("ETH Private key is " + privateKey);
 

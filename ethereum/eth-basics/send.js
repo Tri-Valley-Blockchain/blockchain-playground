@@ -9,7 +9,8 @@ Program
   .version('0.0.1')
   .option('-k, --key [key]', 'What is your wallet key?:')
   .option('-a, --address [address]', 'What is your wallet address?:')
-  .option('-t, --to [address]', 'What is the address of the person you are sending the money to ?:')
+  .option('-t, --to [address]', 'What is the address of the person you are sending the ether to ?:')
+  .option('-e, --ether [number]', 'How much ether you are sending ?:')
   .parse(process.argv);
 
 if (!Program.key || !Program.to) Program.help();
@@ -19,7 +20,7 @@ console.log("Ethereum network set as " + ETHEREUM_NETWORK);
 
 const web3 = new Web3(new Web3.providers.HttpProvider(ETHEREUM_NETWORK))
 
-if (!web3.isConnected()) { 
+if (!web3.isConnected()) {
     console.log("ERROR! Unable to connect to the network at " + ETHEREUM_NETWORK);
     process.exit();
 }
@@ -27,21 +28,24 @@ if (!web3.isConnected()) {
 const theirAddr = Program.to;
 const myPrivateKey = Program.key.slice(2);
 const myAddr = Program.address;
+const ether = Program.ether
 
 // enable this for debugging. avoid printing private keys
 //console.log("My Private key is " + myPrivateKey);
 console.log("My Public  key is " + myAddr);
 console.log("Sending 1 Ether to " + theirAddr);
 
+// https://ethereum.stackexchange.com/questions/17051/how-to-select-a-network-id-or-is-there-a-list-of-network-ids/17101#17101
 const myTx = {
    nonce: web3.toHex(web3.eth.getTransactionCount(myAddr)),
    to: theirAddr,
-   gasPrice: web3.toHex(21000000000),
+   gasPrice: web3.toHex(web3.eth.gasPrice),
    gasLimit: web3.toHex(21000),
-   value: web3.toHex(web3.toWei(1,'ether')),
+   value: web3.toHex(web3.toWei(ether,'ether')),
    data: ""
-} 
+}
 
+console.log(myTx)
 const tx = new EthTx(myTx)
 const pKeyHex = new Buffer(myPrivateKey,"hex")
 

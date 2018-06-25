@@ -21,6 +21,10 @@ if (!Program.address) Program.help();
 
 address=Program.address;
 
+ETHERSCAN='https://etherscan.io'
+if (ETHEREUM_NETWORK.indexOf('rinkeby') > 0) {
+ ETHERSCAN='https://rinkeby.etherscan.io'
+}
 console.log("Wallet address is " + address);
-console.log("Etherscan address: https://rinkeby.etherscan.io/address/" + address);
+console.log(`Etherscan address: ${ETHERSCAN}/address/${address}`);
 console.log('The ether balance is ' + web3.fromWei(web3.eth.getBalance(address),'ether') + ' Ether.');
